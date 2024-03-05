@@ -41,8 +41,8 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
         actuator3 = d.actuator('prop_joint3')
         actuator4 = d.actuator('prop_joint4')
         actuator1.ctrl = [0];
-        actuator2.ctrl = [5];
-        actuator3.ctrl = [-5];
+        actuator2.ctrl = [0];
+        actuator3.ctrl = [0];
         actuator4.ctrl = [0];
 
         with viewer.lock():
