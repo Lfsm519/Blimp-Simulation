@@ -103,7 +103,6 @@
           <body name="propeller2" pos="0.013 0 -0.013">
             <joint type="hinge" name="prop_joint2" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 1 0 1" />
-            <!-- <geom type="box" size="0.001 0.01 0.001"  rgba="0 1 0 1" mass="0.037"/> -->
             <site name="thrust2" pos="0 0 0" />
           </body>
         </body>
@@ -117,7 +116,6 @@
           <body name="propeller3" pos="-0.013 0 0.013">
             <joint type="hinge" name="prop_joint3" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 1 0 1" />
-            <!-- <geom type="box" size="0.001 0.01 0.001" rgba="0 1 0 1"  mass="0.037"/> -->
             <site name="thrust3" pos="0 0 0" />
           </body>
         </body>
@@ -131,15 +129,38 @@
           <body name="propeller4" pos="0 0 0.02">
             <joint type="hinge" name="prop_joint4" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 0 1 1" />
-            <!-- <geom type="box" size="0.001 0.01 0.001"  rgba="0 0 1 1" mass="0.037"/> -->
             <site name="thrust4" pos="0 0 0" />
           </body>
         </body>
+      </body>
+
+      <body name="m5" pos="-0.036 0.021 0" >
+        <body name="polpusion5"  >
+          <geom type="mesh" mesh="Motor v1" />
+          <body name="propeller5" pos="0 0 0.02">
+            <joint type="hinge" name="prop_joint5" damping="0.03" axis="0 0 1" />
+            <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 0 1 1" />
+            <site name="thrust5" pos="0 0 0" />
+          </body>
+        </body>
+      </body>
+
+      <body name="m6" pos="-0.079 0.021 0">
+        <body name="polpusion6" >
+          <geom type="mesh" mesh="Motor v1" />
+          <body name="propeller6" pos="0 0 0.02">
+            <joint type="hinge" name="prop_joint6" damping="0.03" axis="0 0 1" />
+            <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 0 1 1" />
+            <site name="thrust6" pos="0 0 0" />
+          </body>
+        </body> 
+      </body>
+
+
 
         <site name="imu" pos="0 0 .02" />
         <camera name="blimpCamera" pos="0 0 0" quat=" 1 1 0 0 " />
       </body>
-    </body>
   </worldbody>
 
   <actuator>
@@ -147,6 +168,8 @@
     <motor name="prop_joint2" site="thrust2" />
     <motor name="prop_joint3" site="thrust3" />
     <motor name="prop_joint4" site="thrust4" />
+    <motor name="prop_joint5" site="thrust5" gear="0 0 1 0 0 -.0201"/>
+    <motor name="prop_joint6" site="thrust6" gear="0 0 1 0 0 -.0201"/>
     <!-- <motor name="prop_joint" site="thrust1" gear="0 0 0 0 0 0" /> -->
   </actuator>
 

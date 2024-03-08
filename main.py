@@ -25,6 +25,10 @@ d = mujoco.MjData(m)
 camera_name = 'blimpCamera'
 renderer = mujoco.Renderer(m, height=height, width=width )
 
+
+
+
+
 # Main simulation loop
 with mujoco.viewer.launch_passive(m, d) as viewer:
     start = time.time()
@@ -40,10 +44,16 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
         actuator2 = d.actuator('prop_joint2')
         actuator3 = d.actuator('prop_joint3')
         actuator4 = d.actuator('prop_joint4')
+        actuator5 = d.actuator('prop_joint5')
+        actuator6 = d.actuator('prop_joint6')
         actuator1.ctrl = [0];
         actuator2.ctrl = [0];
         actuator3.ctrl = [0];
         actuator4.ctrl = [0];
+        actuator5.ctrl = [-0.2];
+        actuator6.ctrl = [-0.2];
+        # print(d.sensor('body_gyro').data.copy())
+        d.sensor('body_quat').data.copy()
 
         with viewer.lock():
             viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = int(d.time % 2)
