@@ -25,12 +25,28 @@ d = mujoco.MjData(m)
 camera_name = 'blimpCamera'
 renderer = mujoco.Renderer(m, height=height, width=width )
 
+thrust_vec = [0,0,0]
 
 
-
-
+def key_callback(keycode):
+    global thrust_vec
+    print(keycode)
+    if keycode == 265:
+        thrust_vec =[-0.4,0,thrust_vec[2]]
+    if keycode == 263:
+        thrust_vec =[0,-0.4,thrust_vec[2]]
+    if keycode == 264:
+        thrust_vec =[0.4,0,thrust_vec[2]]
+    if keycode == 262:
+        thrust_vec =[0,0.4,thrust_vec[2]] 
+    if chr(keycode) == "U":
+        thrust_vec = [0,0,-0.4]
+    if chr(keycode) == "J":
+        thrust_vec = [0,0,0.4]
+#    else:
+#        thrust_vec = [0 , 0 , 0]
 # Main simulation loop
-with mujoco.viewer.launch_passive(m, d) as viewer:
+with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
     start = time.time()
     while True:
         step_start = time.time()
@@ -46,14 +62,14 @@ with mujoco.viewer.launch_passive(m, d) as viewer:
         actuator4 = d.actuator('prop_joint4')
         actuator5 = d.actuator('prop_joint5')
         actuator6 = d.actuator('prop_joint6')
-        actuator1.ctrl = [0];
-        actuator2.ctrl = [0];
-        actuator3.ctrl = [0];
-        actuator4.ctrl = [0];
-        actuator5.ctrl = [-0.2];
-        actuator6.ctrl = [-0.2];
+        actuator1.ctrl = [thrust_vec[0]];
+        actuator2.ctrl = [thrust_vec[1]];
+        actuator3.ctrl = [-thrust_vec[1]];
+        actuator4.ctrl = [-thrust_vec[0]];
+        actuator5.ctrl = [thrust_vec[2]];
+        actuator6.ctrl = [thrust_vec[2]];
         # print(d.sensor('body_gyro').data.copy())
-        d.sensor('body_quat').data.copy()
+        #d.sensor('body_quat').data.copy()
 
         with viewer.lock():
             viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = int(d.time % 2)

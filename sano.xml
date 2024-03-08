@@ -74,17 +74,17 @@
     <body childclass="pink" gravcomp="7.2" pos="-.2 .1 .5">
       <freejoint />
       <geom name="mylar" type="ellipsoid" size="0.35 0.35 0.20" rgba="0.6 0 0 1" />
-      <site name="mountBalloon1" pos = "0 0 -0.2" ></site>
-      <site name="mountBalloon2" pos = "0 0 -0.2"></site>
-      <site name="mountBalloon3" pos = "0 0 -0.2"></site>
-      <site name="mountBalloon4" pos = "0 0 -0.2"></site>
+      <site name="mountBalloon2" pos = "0.035 0.057 -0.12" ></site>
+      <site name="mountBalloon1" pos = "0.135 -0.015 -0.12"></site>
+      <site name="mountBalloon4" pos = "0.080 -0.015 -0.12"></site>
+      <site name="mountBalloon3" pos = "0.180 0.057  -0.12"></site>
     </body>
 
     <body name="gondola" pos="0.06 0.025 0.2" quat="0 1 0 0" gravcomp="1.1">
       <freejoint/>
       <geom type="mesh" mesh="Gondola" pos="0 0 0" quat="0 1 0 0" />
       <body name="m1" pos="-0.035 0.057 0" quat="0 1 0.45 0">
-      <site name="mountGondola1" pos="0 0 0"/>
+      <site name="mountGondola1" pos="0 0 0.0"/>
         <geom type="mesh" mesh="MotorMountHolder" name="m1" />
         <body name="polpusion" pos="0.005 0.005 -0.024" euler="90 0 0">
           <geom type="mesh" mesh="Motor v1" />
@@ -97,7 +97,7 @@
       </body>
       <body name="m2" pos="-0.035 -0.015 0" quat="0 1 -0.45 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m2" mass="0.08" />
-      <site name="mountGondola2" pos="0 0 0"/>
+      <site name="mountGondola2" pos="0 0 0.0"/>
         <body name="polpusion2" pos="0.005 -0.005 -0.024" euler="90 45 0">
           <geom type="mesh" mesh="Motor v1" euler="0 135 0" />
           <body name="propeller2" pos="0.013 0 -0.013">
@@ -110,7 +110,7 @@
 
       <body name="m3" pos="-0.080 -0.015 0" quat="0 -1 2 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m3" />
-      <site name="mountGondola3" pos="0 0 0"/>
+      <site name="mountGondola3" pos="0 0 0.0"/>
         <body name="polpusion3" pos="0.005 0.005 -0.024" euler="90 45 0">
           <geom type="mesh" mesh="Motor v1" euler="0 -45 0" />
           <body name="propeller3" pos="-0.013 0 0.013">
@@ -123,7 +123,7 @@
 
       <body name="m4" pos="-0.080 0.057 0" quat="0 0.2 0.45 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m4" mass="0.08" />
-      <site name="mountGondola4" pos="0 0 0"/>
+      <site name="mountGondola4" pos="0 0 0.0"/>
         <body name="polpusion4" pos="0.005 -0.005 -0.024" euler="-90 0 0">
           <geom type="mesh" mesh="Motor v1" />
           <body name="propeller4" pos="0 0 0.02">
