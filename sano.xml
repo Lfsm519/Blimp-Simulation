@@ -71,19 +71,19 @@
 
   <worldbody>
 
-    <body childclass="pink" gravcomp="7.2" pos="-.2 .1 .5">
+    <body childclass="pink" gravcomp="7.2" pos="0 0 .5">
       <freejoint />
       <geom name="mylar" type="ellipsoid" size="0.35 0.35 0.20" rgba="0.6 0 0 1" />
-      <site name="mountBalloon2" pos = "0.035 0.057 -0.12" ></site>
-      <site name="mountBalloon1" pos = "0.135 -0.015 -0.12"></site>
-      <site name="mountBalloon4" pos = "0.080 -0.015 -0.12"></site>
-      <site name="mountBalloon3" pos = "0.180 0.057  -0.12"></site>
+      <site name="mountBalloon4" pos = "-0.020 -0.034 -0.2" ></site>
+      <site name="mountBalloon2" pos = "0.020 0.035 -0.2"></site>
+      <site name="mountBalloon3" pos = "-.020 0.034 -0.2"></site>
+      <site name="mountBalloon1" pos = "0.020 -0.035 -0.2"></site>
     </body>
 
-    <body name="gondola" pos="0.06 0.025 0.2" quat="0 1 0 0" gravcomp="1.1">
+    <body name="gondola" pos="0 0 0" quat="0 1 0 0" gravcomp="1.1">
       <freejoint/>
       <geom type="mesh" mesh="Gondola" pos="0 0 0" quat="0 1 0 0" />
-      <body name="m1" pos="-0.035 0.057 0" quat="0 1 0.45 0">
+      <body name="m1" pos="0.020 0.035 0" quat="0 1 0.45 0">
       <site name="mountGondola1" pos="0 0 0.0"/>
         <geom type="mesh" mesh="MotorMountHolder" name="m1" />
         <body name="polpusion" pos="0.005 0.005 -0.024" euler="90 0 0">
@@ -95,12 +95,12 @@
           </body>
         </body>
       </body>
-      <body name="m2" pos="-0.035 -0.015 0" quat="0 1 -0.45 0">
+      <body name="m2" pos="0.020 -0.035 0" quat="0 1 -0.45 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m2" mass="0.08" />
       <site name="mountGondola2" pos="0 0 0.0"/>
         <body name="polpusion2" pos="0.005 -0.005 -0.024" euler="90 45 0">
           <geom type="mesh" mesh="Motor v1" euler="0 135 0" />
-          <body name="propeller2" pos="0.013 0 -0.013">
+          <body name="propeller2" pos="0.015 0 -0.015" euler="0 135 0">
             <joint type="hinge" name="prop_joint2" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 1 0 1" />
             <site name="thrust2" pos="0 0 0" />
@@ -108,12 +108,12 @@
         </body>
       </body>
 
-      <body name="m3" pos="-0.080 -0.015 0" quat="0 -1 2 0">
+      <body name="m3" pos="-0.020 -0.034 0" quat="0 -1 2 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m3" />
       <site name="mountGondola3" pos="0 0 0.0"/>
         <body name="polpusion3" pos="0.005 0.005 -0.024" euler="90 45 0">
           <geom type="mesh" mesh="Motor v1" euler="0 -45 0" />
-          <body name="propeller3" pos="-0.013 0 0.013">
+          <body name="propeller3" pos="-0.015 0 0.015" euler="0 -45 0">
             <joint type="hinge" name="prop_joint3" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 1 0 1" />
             <site name="thrust3" pos="0 0 0" />
@@ -121,7 +121,7 @@
         </body>
       </body>
 
-      <body name="m4" pos="-0.080 0.057 0" quat="0 0.2 0.45 0">
+      <body name="m4" pos="-0.020 0.035 0" quat="0 0.2 0.45 0">
         <geom type="mesh" mesh="MotorMountHolder" name="m4" mass="0.08" />
       <site name="mountGondola4" pos="0 0 0.0"/>
         <body name="polpusion4" pos="0.005 -0.005 -0.024" euler="-90 0 0">
@@ -134,7 +134,7 @@
         </body>
       </body>
 
-      <body name="m5" pos="-0.036 0.021 0" >
+      <body name="m5" pos="0.020 0 0" >
         <body name="polpusion5"  >
           <geom type="mesh" mesh="Motor v1" />
           <body name="propeller5" pos="0 0 0.02">
@@ -145,21 +145,19 @@
         </body>
       </body>
 
-      <body name="m6" pos="-0.079 0.021 0">
+      <body name="m6" pos="-0.020 0 0">
         <body name="polpusion6" >
           <geom type="mesh" mesh="Motor v1" />
           <body name="propeller6" pos="0 0 0.02">
             <joint type="hinge" name="prop_joint6" damping="0.03" axis="0 0 1" />
             <geom type="ellipsoid" size="0.0025 0.015 0.001" rgba="0 0 1 1" />
-            <site name="thrust6" pos="0 0 0" />
+            <site name="thrust6" pos="0 0 0.02" />
           </body>
         </body> 
       </body>
 
-
-
-        <site name="imu" pos="0 0 .02" />
-        <camera name="blimpCamera" pos="0 0 0" quat=" 1 1 0 0 " />
+        <site name="imu" pos="0 0 0" />
+        <camera name="blimpCamera" pos="0 -0.01 0" quat=" 1 -1 0 0 " />
       </body>
   </worldbody>
 
@@ -174,19 +172,19 @@
   </actuator>
 
   <tendon>
-    <spatial range="0 0.01">
+    <spatial range="0 0.0001">
       <site site="mountBalloon1"/>
       <site site="mountGondola1"/>
     </spatial>
-    <spatial range="0 0.01">
+    <spatial range="0 0.0001">
       <site site="mountBalloon2"/>
       <site site="mountGondola2"/>
     </spatial>
-    <spatial range="0 0.01">
+    <spatial range="0 0.0001">
       <site site="mountBalloon3"/>
       <site site="mountGondola3"/>
     </spatial>
-    <spatial range="0 0.01">
+    <spatial range="0 0.0001">
       <site site="mountBalloon4"/>
       <site site="mountGondola4"/>
     </spatial>
