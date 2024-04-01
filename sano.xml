@@ -166,8 +166,8 @@
     <motor name="prop_joint2" site="thrust2" />
     <motor name="prop_joint3" site="thrust3" />
     <motor name="prop_joint4" site="thrust4" />
-    <motor name="prop_joint5" site="thrust5" gear="0 0 1 0 0 -.0201"/>
-    <motor name="prop_joint6" site="thrust6" gear="0 0 1 0 0 -.0201"/>
+    <motor name="prop_joint5" site="thrust5" gear="0 0 1 0 0 .0201"/>
+    <motor name="prop_joint6" site="thrust6" gear="0 0 1 0 0 .0201"/>
     <!-- <motor name="prop_joint" site="thrust1" gear="0 0 0 0 0 0" /> -->
   </actuator>
 

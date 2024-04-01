@@ -54,6 +54,7 @@ def key_callback(keycode):
 # Main simulation loop
 with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
     start = time.time()
+    init_pos = d.qpos #initial position of the blimp
     while True:
         step_start = time.time()
 
@@ -74,8 +75,15 @@ with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
         actuator4.ctrl = [thrust_vec[0]]
         actuator5.ctrl = [thrust_vec[2]]
         actuator6.ctrl = [thrust_vec[2]]
+        print(d.geom_xpos)
+
+        cur_pos = d.qpos
+        # Error calculation
+
 #        print(d.sensor('body_gyro').data.copy())
 #        d.sensor('body_quat').data.copy()
+
+
 
         with viewer.lock():
             viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = int(
