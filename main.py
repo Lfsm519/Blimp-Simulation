@@ -18,7 +18,6 @@ size = (width, height)
 #                          cv2.VideoWriter_fourcc(*'MJPG'),
 #                          60, size)
 
-
 m = mujoco.MjModel.from_xml_path('sano.xml')
 d = mujoco.MjData(m)
 
@@ -30,23 +29,32 @@ thrust_vec = [0, 0, 0]
 
 def key_callback(keycode):
     global thrust_vec
-    print(keycode)
     # Forward
     if keycode == 265:
         thrust_vec = [-0.4, 0, thrust_vec[2]]
+        return
     #right
     if keycode == 263:
         thrust_vec = [0, -0.4, thrust_vec[2]]
+        return
     # Back
     if keycode == 264:
         thrust_vec = [0.4, 0, thrust_vec[2]]
+        return
     # Left
     if keycode == 262:
         thrust_vec = [0, 0.9, thrust_vec[2]]
+        return
     if chr(keycode) == "U":
         thrust_vec = [0, 0, -0.4]
+        return
     if chr(keycode) == "J":
         thrust_vec = [0, 0, 0.4]
+        return
+
+    thrust_vec = [0, 0, 0]
+
+
 
 
 #    else:
@@ -57,7 +65,6 @@ with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
     init_pos = d.qpos #initial position of the blimp
     while True:
         step_start = time.time()
-
         mujoco.mj_step(m, d)
         renderer.update_scene(d, camera=camera_name)
         pixels = renderer.render()
@@ -75,15 +82,8 @@ with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
         actuator4.ctrl = [thrust_vec[0]]
         actuator5.ctrl = [thrust_vec[2]]
         actuator6.ctrl = [thrust_vec[2]]
-        print(d.geom_xpos)
-
         cur_pos = d.qpos
         # Error calculation
-
-#        print(d.sensor('body_gyro').data.copy())
-#        d.sensor('body_quat').data.copy()
-
-
 
         with viewer.lock():
             viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = int(
