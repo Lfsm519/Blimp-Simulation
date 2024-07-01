@@ -170,6 +170,12 @@
     <motor name="prop_joint6" site="thrust6" gear="0 0 1 0 0 .0201"/>
     <!-- <motor name="prop_joint" site="thrust1" gear="0 0 0 0 0 0" /> -->
   </actuator>
+  
+  <!-- adding sensor for accelerometer wind adjustment -->
+  <sensor>
+    <accelerometer name = "accel1" site = "thrust1" />
+  </sensor>
+
 
   <tendon>
     <spatial range="0 0.0001">

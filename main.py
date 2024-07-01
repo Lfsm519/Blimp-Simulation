@@ -51,6 +51,12 @@ def key_callback(keycode):
     if chr(keycode) == "J":
         thrust_vec = [0, 0, 0.4]
         return
+    
+    #"homing" keybind
+    if chr(keycode) == "H":
+        thrust_vec = [-accel[0], -accel[1], -accel[2]]
+        print("asdf")
+        return
 
     thrust_vec = [0, 0, 0]
 
@@ -70,6 +76,10 @@ with mujoco.viewer.launch_passive(m, d, key_callback=key_callback) as viewer:
         pixels = renderer.render()
         img = cv2.cvtColor(pixels, cv2.COLOR_RGB2BGR)
         # result.write(img)
+
+        #adding wind compensation sensor
+        accel = d.sensor('accel1')
+        
         actuator1 = d.actuator('prop_joint')
         actuator2 = d.actuator('prop_joint2')
         actuator3 = d.actuator('prop_joint3')
